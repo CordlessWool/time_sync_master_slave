@@ -1,0 +1,3 @@
+/home/wolle/Workspace/c/MasterSlaveTimesync/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/wolle/Workspace/c/MasterSlaveTimesync/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/wolle/Workspace/c/MasterSlaveTimesync/cmake-build-debug/CMakeFiles/MasterSlaveTimesync.dir

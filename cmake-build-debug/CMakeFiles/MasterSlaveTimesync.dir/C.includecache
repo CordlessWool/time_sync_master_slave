@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/wolle/Workspace/c/MasterSlaveTimesync/connect.c
+connect.h
+/home/wolle/Workspace/c/MasterSlaveTimesync/connect.h
+sys/socket.h
+-
+
+/home/wolle/Workspace/c/MasterSlaveTimesync/connect.h
+
+/home/wolle/Workspace/c/MasterSlaveTimesync/main.c
+stdio.h
+-
+sys/socket.h
+-
+netinet/in.h
+-
+arpa/inet.h
+-
+stdlib.h
+-
+zconf.h
+-
+
