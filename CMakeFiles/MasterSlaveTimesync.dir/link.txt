@@ -1,0 +1,1 @@
+/usr/bin/cc  -g   CMakeFiles/MasterSlaveTimesync.dir/main.c.o CMakeFiles/MasterSlaveTimesync.dir/sock.c.o CMakeFiles/MasterSlaveTimesync.dir/error.c.o CMakeFiles/MasterSlaveTimesync.dir/str.c.o CMakeFiles/MasterSlaveTimesync.dir/master/master.c.o  -o MasterSlaveTimesync -lpthread 

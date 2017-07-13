@@ -38,11 +38,12 @@ int isThereAMaster(int sock, char* broadcastIP, int port, struct sockaddr_in *si
     char buf[BUFLEN];
     int recvLen, helloLen = sizeof(hello);
 
+    setReciveTimeout(sock, 7, 0);
+
     if(sendto(sock, hello, helloLen, 0, (struct sockaddr*)&si_braod, sizeof(si_braod)) == -1){
         die("Could not send broadcast");
     }
 
-    setReciveTimeout(sock, 7, 0);
 
     if((recvLen = recvfrom(sock, buf, BUFLEN, 0, (struct sockadd *)si_master, sizeof((*si_master)))) == -1){
         return -1;
