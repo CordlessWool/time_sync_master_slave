@@ -9,6 +9,9 @@
 
 #define BUFLEN 500
 
+
+
+
 int setReciveTimeout(int sock, int sec, int usec){
     struct timeval timeout;
     timeout.tv_sec = sec;
@@ -22,10 +25,10 @@ int setReciveTimeout(int sock, int sec, int usec){
 }
 
 
-int isThereAMaster(int sock, char* broadcastIP, int port, struct sockaddr_in si_master){
+int isThereAMaster(int sock, char* broadcastIP, int port, struct sockaddr_in *si_master){
 
     struct sockaddr_in si_braod;
-    si_braod.sin_addr.s_addr = broadcastIP;
+    si_braod.sin_addr.s_addr = *broadcastIP;
     si_braod.sin_family = AF_INET;
     si_braod.sin_port = htons(port);
 
@@ -41,7 +44,7 @@ int isThereAMaster(int sock, char* broadcastIP, int port, struct sockaddr_in si_
 
     setReciveTimeout(sock, 7, 0);
 
-    if((recvLen = recvfrom(sock, buf, BUFLEN, 0, (struct sockadd*)&si_master, sizeof(si_master))) == -1){
+    if((recvLen = recvfrom(sock, buf, BUFLEN, 0, (struct sockadd *)si_master, sizeof((*si_master)))) == -1){
         return -1;
     }
 
@@ -49,3 +52,8 @@ int isThereAMaster(int sock, char* broadcastIP, int port, struct sockaddr_in si_
 
 }
 
+int addSlave(struct Slaves *slaves, struct sockaddr_in* si_slave){
+    int counter = ++(*slaves).counter;
+    (*slaves).slaves[counter] = *si_slave;
+    return 0;
+}

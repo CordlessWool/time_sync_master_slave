@@ -4,16 +4,18 @@
 #include <arpa/inet.h>
 #include <stdlib.h>
 #include <zconf.h>
+#include <pthread.h>
 #include "error.h"
 #include "sock.h"
 #include "master/master.h"
 
 #define BUFLEN 512
 #define PORT 5005
+#define REGIST_PORT 4004
 
-
-int main(char *argv[]) {
+int main(int argc, char **argv) {
     printf("Hello, World!\n");
+    printf(argv[1]);
 
     struct sockaddr_in si_me, si_other, si_master;
 
@@ -34,9 +36,20 @@ int main(char *argv[]) {
         die("Could not bind a socket to port");
     }
 
-    if(isThereAMaster(sock, argv[0], PORT, si_master) == -1){
+    if(isThereAMaster(sock, argv[1], REGIST_PORT, &si_master) == -1){
+
+        pthread_t thread;
+
+        struct Slaves slaves;
+        slaves.slaves[50];
+        slaves.max = 50;
+        slaves.counter = 0;
+        slaves.registerPort = REGIST_PORT;
+
+        pthread_create(&thread, NULL, &waitingForSlaves, (void *) (&slaves));
+
         printf("I am the master\n");
-        master(sock, si_me, BUFLEN);
+        master(sock, si_me);
     }else{
         printf("I am a slave\n");
     }
