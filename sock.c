@@ -71,7 +71,7 @@ int isThereAMaster(int sock, char* broadcastIP, int port, struct sockaddr_in *si
 
 
 //    for(int i = 0; i<200; i++) {
-        recvLen = recvfrom(sock, buf, BUFLEN, 0, (struct sockaddr *) &si_test, sizeof si_test);
+        recvLen = recvfrom(sock, buf, BUFLEN, 0, (struct sockaddr *) &si_test, sizeof(si_test));
 //        recvLen = recvfrom(sock, buf, BUFLEN, 0, (struct sockadd *)&si_test, sizeof(si_test));
         if (recvLen > 0) {
             //print details of the client/peer and the data received
