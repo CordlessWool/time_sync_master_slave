@@ -22,7 +22,7 @@ int master(int sock, struct sockaddr_in si_me){
 
     while(1)
     {
-        printf("Waiting for data...");
+        //printf("Waiting for data...");
         fflush(stdout);
 
         //try to receive some data, this is a blocking call
@@ -70,10 +70,13 @@ void* waitingForSlaves(void *data){
     }
 
      /* Set socket to allow broadcast */
-    if (allowBraodcast(sock, 1) < 0)
+    if (allowBroadcast(sock, 1) < 0)
         perror("setsockopt() failed");
 
     while(1){
+
+        printf("waiting for new slave...");
+
         if ((recvLen = recvfrom(sock, buf, BUFLEN, 0, (struct sockaddr *) &si_slave, &siLen)) > 0)
         {
 

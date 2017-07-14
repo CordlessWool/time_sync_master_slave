@@ -59,9 +59,17 @@ master.h
 /home/wolle/Workspace/c/MasterSlaveTimesync/sock.c
 sock.h
 /home/wolle/Workspace/c/MasterSlaveTimesync/sock.h
+stdio.h
+-
 sys/socket.h
 -
 netinet/in.h
+-
+zconf.h
+-
+arpa/inet.h
+-
+string.h
 -
 error.h
 /home/wolle/Workspace/c/MasterSlaveTimesync/error.h
