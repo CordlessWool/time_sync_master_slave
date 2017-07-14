@@ -6,7 +6,6 @@
 #include <stdio.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
-#include <jmorecfg.h>
 #include "master.h"
 #include "../error.h"
 #include "../sock.h"
@@ -71,7 +70,7 @@ void* waitingForSlaves(void *data){
     }
 
      /* Set socket to allow broadcast */
-    if (allowBraodcast(sock, TRUE) < 0)
+    if (allowBraodcast(sock, 1) < 0)
         perror("setsockopt() failed");
 
     while(1){

@@ -69,6 +69,8 @@ error.h
 /home/wolle/Workspace/c/MasterSlaveTimesync/sock.h
 netinet/in.h
 -
+stdbool.h
+-
 
 /home/wolle/Workspace/c/MasterSlaveTimesync/str.c
 str.h

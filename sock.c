@@ -5,12 +5,9 @@
 #include "sock.h"
 #include <sys/socket.h>
 #include <netinet/in.h>
-#include <jmorecfg.h>
 #include "error.h"
 
 #define BUFLEN 500
-
-
 
 
 int setReciveTimeout(int sock, int sec, int usec){
@@ -41,7 +38,7 @@ int isThereAMaster(int sock, char* broadcastIP, int port, struct sockaddr_in *si
 
     setReciveTimeout(sock, 7, 0);
 
-    allowBraodcast(sock, TRUE);
+    allowBraodcast(sock, 1);
 
 
     if(sendto(sock, hello, helloLen, 0, (struct sockaddr*)&si_braod, sizeof(si_braod)) == -1){
