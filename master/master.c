@@ -76,7 +76,7 @@ void* waitingForSlaves(void *data){
             printf("Data: %s\n" , buf);
 
             //now reply the client with the same data
-            if (sendto(sock, buf, recvLen, 0, (struct sockaddr*) &si_slave, &siLen) >= 0)
+            if (sendto(sock, buf, recvLen, 0, (struct sockaddr*) &si_slave, siLen) >= 0)
             {
                 addSlave(slaves, &si_slave);
             }

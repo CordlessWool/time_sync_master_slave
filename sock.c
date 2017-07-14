@@ -49,8 +49,8 @@ int isThereAMaster(int sock, char* broadcastIP, int port, struct sockaddr_in *si
     }
 
 
-    int siBroadLen = sizeof(si_broad);
-    if(sendto(sock, hello, helloLen, 0, (struct sockaddr*)&si_broad, &siBroadLen) == -1){
+    int siBroadLen = sizeof si_broad;
+    if(sendto(sock, hello, helloLen, 0, (struct sockaddr*)&si_broad, (siBroadLen)) == -1){
         die("sendto()");
     }
 
