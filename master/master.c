@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
+#include <jmorecfg.h>
 #include "master.h"
 #include "../error.h"
 #include "../sock.h"
@@ -68,6 +69,10 @@ void* waitingForSlaves(void *data){
     if(bind(sock, (struct sockaddr*)&si_me, sizeof(si_me)) == -1){
         die("Could not bind a socket to port");
     }
+
+     /* Set socket to allow broadcast */
+    if (allowBraodcast(sock, TRUE) < 0)
+        perror("setsockopt() failed");
 
     while(1){
         if ((recvLen = recvfrom(sock, buf, BUFLEN, 0, (struct sockaddr *) &si_slave, &siLen)) > 0)
