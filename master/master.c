@@ -6,14 +6,16 @@
 #include <stdio.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
-#include "master.h"
+#include <zconf.h>
 #include "../error.h"
 #include "../sock.h"
+
+#include "master.h"
 
 #define BUFLEN 512
 
 
-int master(int sock, struct sockaddr_in si_me){
+void master(int sock, struct sockaddr_in si_me, struct Slaves *slaves){
 
     struct sockaddr_in si_other;
 
@@ -22,26 +24,14 @@ int master(int sock, struct sockaddr_in si_me){
 
     while(1)
     {
-        //printf("Waiting for data...");
-        fflush(stdout);
 
-        //try to receive some data, this is a blocking call
-        if ((recvLen = recvfrom(sock, buf, BUFLEN, 0, (struct sockaddr *) &si_other, &siLen)) > 0)
-        {
-                //die("recvfrom()");
-
-
-            //print details of the client/peer and the data received
-            printf("Received packet from %s:%d\n", inet_ntoa(si_other.sin_addr), ntohs(si_other.sin_port));
-            printf("Data: %s\n" , buf);
-
-            //now reply the client with the same data
-            if (sendto(sock, buf, recvLen, 0, (struct sockaddr*) &si_other, siLen) == -1)
-            {
-                //die("sendto()");
-            }
+        for(int i = 0; i < slaves->counter; i++){
+            printf("Known Slave %s:%d\n", inet_ntoa(slaves->slaves[i].sin_addr), ntohs(slaves->slaves[i].sin_port));
         }
+
+        sleep(10);
     }
+
 
 }
 
@@ -86,7 +76,7 @@ void* waitingForSlaves(void *data){
             printf("Data: %s\n" , buf);
 
             //now reply the client with the same data
-            if (sendto(sock, buf, recvLen, 0, (struct sockaddr*) &si_slave, siLen) >= 0)
+            if (sendto(sock, buf, recvLen, 0, (struct sockaddr*) &si_slave, &siLen) >= 0)
             {
                 addSlave(slaves, &si_slave);
             }

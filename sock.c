@@ -31,12 +31,10 @@ int allowBroadcast(int sock, int allow){
 
 int isThereAMaster(int sock, char* broadcastIP, int port, struct sockaddr_in *si_master){
 
-    struct sockaddr_in si_braod, si_test;
-    si_braod.sin_addr.s_addr = inet_addr((broadcastIP));//htonl(INADDR_BROADCAST);
-    si_braod.sin_family = AF_INET;
-    si_braod.sin_port = htons(port);
-
-//    printf(broadcastIP);
+    struct sockaddr_in si_broad;
+    si_broad.sin_addr.s_addr = inet_addr((broadcastIP));//htonl(INADDR_BROADCAST);
+    si_broad.sin_family = AF_INET;
+    si_broad.sin_port = htons(port);
 
     static const char hello[] = "hello, is there anybody?";
     char buf[BUFLEN];
@@ -45,49 +43,40 @@ int isThereAMaster(int sock, char* broadcastIP, int port, struct sockaddr_in *si
 
     setReciveTimeout(sock, 3, 0);
 
-    //create udp socket
-    /*if((sock=socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)) == -1){
-        die("Could not establish a socket");
-    }
-
-    //bind socket to port
-    if(bind(sock, (struct sockaddr*)&si_, sizeof(si_braod)) == -1){
-        die("Could not bind a socket to port");
-    }*/
-
+    //allow sending Broadcast
     if(allowBroadcast(sock, 1) == -1){
         die("allowBroadcast()");
     }
 
 
-    if(sendto(sock, hello, helloLen, 0, (struct sockaddr*)&si_braod, sizeof(si_braod)) == -1){
+    int siBroadLen = sizeof(si_broad);
+    if(sendto(sock, hello, helloLen, 0, (struct sockaddr*)&si_broad, &siBroadLen) == -1){
         die("sendto()");
     }
 
+    //was send, so remove broadcast permission again
     if(allowBroadcast(sock, 0) == -1){
         die("allowBroadcast()");
     }
     printf("Waiting for master response\n");
 
+    int siMasterLen = sizeof(si_master);
+    recvLen = recvfrom(sock, buf, BUFLEN, 0, (struct sockaddr *) &si_master, &(siMasterLen));
 
-    int testLen = sizeof(si_test);
-//    for(int i = 0; i<200; i++) {
-        recvLen = recvfrom(sock, buf, BUFLEN, 0, (struct sockaddr *) &si_test, &(testLen));
-//        recvLen = recvfrom(sock, buf, BUFLEN, 0, (struct sockadd *)&si_test, sizeof(si_test));
-        if (recvLen > 0) {
-            //print details of the client/peer and the data received
-            //printf("Received packet from %s:%d\n", inet_ntoa((*si_test).sin_addr), ntohs((*si_test).sin_port));
-            //printf("Data: %s\n", buf);
-            //close(sock);
-            return 0;
-        } else if (recvLen) {
-            //print details of the client/peer and the data received
+    if (recvLen > 0) {
+        //print details of the client/peer and the data received
+        //printf("Received packet from %s:%d\n", inet_ntoa((*si_test).sin_addr), ntohs((*si_test).sin_port));
+        //printf("Data: %s\n", buf);
+        //close(sock);
+        return 0;
+    } else if (recvLen) {
+        //print details of the client/peer and the data received
 
-            return -1;
-        }
-//    }
+        return -1;
+    }
 
-    printf("Received packet from %s:%d\n", inet_ntoa((si_test).sin_addr), ntohs((si_test).sin_port));
+
+    printf("Received packet from %s:%d\n", inet_ntoa((*si_master).sin_addr), ntohs((*si_master).sin_port));
             printf("Data: %s\n", buf);
             printf("%d\n", recvLen);
             close(sock);

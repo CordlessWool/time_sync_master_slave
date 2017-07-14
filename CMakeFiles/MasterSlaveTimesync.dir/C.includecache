@@ -47,12 +47,14 @@ sys/socket.h
 -
 arpa/inet.h
 -
-master.h
-/home/wolle/Workspace/c/MasterSlaveTimesync/master/master.h
+zconf.h
+-
 ../error.h
 /home/wolle/Workspace/c/MasterSlaveTimesync/error.h
 ../sock.h
 /home/wolle/Workspace/c/MasterSlaveTimesync/sock.h
+master.h
+/home/wolle/Workspace/c/MasterSlaveTimesync/master/master.h
 
 /home/wolle/Workspace/c/MasterSlaveTimesync/master/master.h
 

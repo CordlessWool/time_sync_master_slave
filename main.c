@@ -49,7 +49,7 @@ int main(int argc, char **argv) {
         pthread_create(&thread, NULL, &waitingForSlaves, (void *) (&slaves));
 
         printf("I am the master\n");
-        master(sock, si_me);
+        master(sock, si_me, &slaves);
     }else{
         printf("I am a slave\n");
     }
