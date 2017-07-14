@@ -43,7 +43,7 @@ int isThereAMaster(int sock, char* broadcastIP, int port, struct sockaddr_in *si
     memset(buf, 0, sizeof buf);
     int recvLen, helloLen = sizeof(hello);
 
-    //setReciveTimeout(sock, 7, 0);
+    setReciveTimeout(sock, 3, 0);
 
     //create udp socket
     /*if((sock=socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)) == -1){
@@ -60,29 +60,30 @@ int isThereAMaster(int sock, char* broadcastIP, int port, struct sockaddr_in *si
     }
 
 
-/*    if(sendto(sock, hello, helloLen, 0, (struct sockaddr*)&si_braod, sizeof(si_braod)) == -1){
+    if(sendto(sock, hello, helloLen, 0, (struct sockaddr*)&si_braod, sizeof(si_braod)) == -1){
         die("sendto()");
     }
-*/
+
     if(allowBroadcast(sock, 0) == -1){
         die("allowBroadcast()");
     }
     printf("Waiting for master response\n");
 
 
+    int testLen = sizeof(si_test);
 //    for(int i = 0; i<200; i++) {
-        recvLen = recvfrom(sock, buf, BUFLEN, 0, (struct sockaddr *) &si_test, sizeof(si_test));
+        recvLen = recvfrom(sock, buf, BUFLEN, 0, (struct sockaddr *) &si_test, &(testLen));
 //        recvLen = recvfrom(sock, buf, BUFLEN, 0, (struct sockadd *)&si_test, sizeof(si_test));
         if (recvLen > 0) {
             //print details of the client/peer and the data received
             //printf("Received packet from %s:%d\n", inet_ntoa((*si_test).sin_addr), ntohs((*si_test).sin_port));
             //printf("Data: %s\n", buf);
             //close(sock);
-            //return 0;
+            return 0;
         } else if (recvLen) {
             //print details of the client/peer and the data received
 
-            //return -1;
+            return -1;
         }
 //    }
 
