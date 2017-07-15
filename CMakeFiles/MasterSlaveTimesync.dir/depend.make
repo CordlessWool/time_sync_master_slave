@@ -7,12 +7,16 @@ CMakeFiles/MasterSlaveTimesync.dir/error.c.o: error.h
 CMakeFiles/MasterSlaveTimesync.dir/main.c.o: error.h
 CMakeFiles/MasterSlaveTimesync.dir/main.c.o: main.c
 CMakeFiles/MasterSlaveTimesync.dir/main.c.o: master/master.h
+CMakeFiles/MasterSlaveTimesync.dir/main.c.o: slave/slave.h
 CMakeFiles/MasterSlaveTimesync.dir/main.c.o: sock.h
 
 CMakeFiles/MasterSlaveTimesync.dir/master/master.c.o: error.h
 CMakeFiles/MasterSlaveTimesync.dir/master/master.c.o: master/master.c
 CMakeFiles/MasterSlaveTimesync.dir/master/master.c.o: master/master.h
 CMakeFiles/MasterSlaveTimesync.dir/master/master.c.o: sock.h
+
+CMakeFiles/MasterSlaveTimesync.dir/slave/slave.c.o: slave/slave.c
+CMakeFiles/MasterSlaveTimesync.dir/slave/slave.c.o: slave/slave.h
 
 CMakeFiles/MasterSlaveTimesync.dir/sock.c.o: error.h
 CMakeFiles/MasterSlaveTimesync.dir/sock.c.o: sock.c

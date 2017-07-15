@@ -7,29 +7,70 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <zconf.h>
+#include <time.h>
 #include "../error.h"
 #include "../sock.h"
 
 #include "master.h"
 
-#define BUFLEN 512
+#define BUFLEN 64
 
 
 void master(int sock, struct sockaddr_in si_me, struct Slaves *slaves){
 
-    struct sockaddr_in si_other;
+    struct sockaddr_in si_slave, si_other;
 
-    int siLen = sizeof(si_other), recvLen;
-    char buf[BUFLEN];
+    int siLen = sizeof(si_slave), recvLen;
+    //char buf[BUFLEN];
+
+    int timeToSleep = 10;
+    int sleepTillNext;
+
+    struct timespec currentTime;
+    char timeStr[BUFLEN];
+    bool loop = false;
 
     while(1)
     {
+        int counterSlave = (*slaves).counter;
+        if(counterSlave > 0)sleepTillNext = timeToSleep/counterSlave;
+        for(int i = 0; i < counterSlave; i++){
 
-        for(int i = 0; i < slaves->counter; i++){
-            printf("Known Slave %s:%d\n", inet_ntoa(slaves->slaves[i].sin_addr), ntohs(slaves->slaves[i].sin_port));
+            si_slave = slaves->slaves[i];
+
+            printf("Known Slave %s:%d\n",
+                   inet_ntoa(slaves->slaves[i].sin_addr),
+                   ntohs(slaves->slaves[i].sin_port));
+
+            if(clock_gettime(CLOCK_REALTIME, &currentTime)){
+                perror("clocl_gettime()");
+            }
+
+
+
+            do {
+                if (sendto(sock, &currentTime, sizeof(currentTime), 0
+                        , (struct sockaddr *) &si_slave, &siLen)) {
+
+                    if(loop){
+
+                        loop = false;
+
+                    }else if (recvfrom(sock, timeStr, BUFLEN, 0
+                            , (struct sockaddr *) &si_other, &siLen)) {
+
+                        loop = true;
+
+                    }
+                }
+            }while(loop);
+
+
+            sleep(sleepTillNext);
+
         }
 
-        sleep(10);
+        sleep(1);
     }
 
 
@@ -66,13 +107,16 @@ void* waitingForSlaves(void *data){
     while(1){
 
         printf("waiting for new slave...");
+        fflush(stdout);
 
-        if ((recvLen = recvfrom(sock, buf, BUFLEN, 0, (struct sockaddr *) &si_slave, &siLen)) > 0)
+        if ((recvLen = recvfrom(sock, buf, BUFLEN, 0,
+                                (struct sockaddr *) &si_slave, &siLen)) > 0)
         {
 
 
             //print details of the client/peer and the data received
-            printf("Received packet from %s:%d\n", inet_ntoa(si_slave.sin_addr), ntohs(si_slave.sin_port));
+            printf("Received packet from %s:%d\n",
+                   inet_ntoa(si_slave.sin_addr), ntohs(si_slave.sin_port));
             printf("Data: %s\n" , buf);
 
             //now reply the client with the same data

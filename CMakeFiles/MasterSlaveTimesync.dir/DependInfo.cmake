@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/wolle/Workspace/c/MasterSlaveTimesync/error.c" "/home/wolle/Workspace/c/MasterSlaveTimesync/CMakeFiles/MasterSlaveTimesync.dir/error.c.o"
   "/home/wolle/Workspace/c/MasterSlaveTimesync/main.c" "/home/wolle/Workspace/c/MasterSlaveTimesync/CMakeFiles/MasterSlaveTimesync.dir/main.c.o"
   "/home/wolle/Workspace/c/MasterSlaveTimesync/master/master.c" "/home/wolle/Workspace/c/MasterSlaveTimesync/CMakeFiles/MasterSlaveTimesync.dir/master/master.c.o"
+  "/home/wolle/Workspace/c/MasterSlaveTimesync/slave/slave.c" "/home/wolle/Workspace/c/MasterSlaveTimesync/CMakeFiles/MasterSlaveTimesync.dir/slave/slave.c.o"
   "/home/wolle/Workspace/c/MasterSlaveTimesync/sock.c" "/home/wolle/Workspace/c/MasterSlaveTimesync/CMakeFiles/MasterSlaveTimesync.dir/sock.c.o"
   "/home/wolle/Workspace/c/MasterSlaveTimesync/str.c" "/home/wolle/Workspace/c/MasterSlaveTimesync/CMakeFiles/MasterSlaveTimesync.dir/str.c.o"
   )

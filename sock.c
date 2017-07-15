@@ -89,7 +89,7 @@ int isThereAMaster(int sock, char* broadcastIP, int port, struct sockaddr_in *si
 
 
 int addSlave(struct Slaves *slaves, struct sockaddr_in* si_slave){
-    int counter = ++(*slaves).counter;
-    (*slaves).slaves[counter] = *si_slave;
+    int counter = (slaves->counter)++;
+    slaves->slaves[counter] = *si_slave;
     return 0;
 }

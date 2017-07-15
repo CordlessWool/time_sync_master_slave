@@ -5,9 +5,11 @@
 #include <stdlib.h>
 #include <zconf.h>
 #include <pthread.h>
+#include <string.h>
 #include "error.h"
 #include "sock.h"
 #include "master/master.h"
+#include "slave/slave.h"
 
 #define BUFLEN 512
 #define PORT 5005
@@ -42,6 +44,7 @@ int main(int argc, char **argv) {
 
         struct Slaves slaves;
         slaves.slaves[50];
+        memset(slaves.slaves, 0, 50);
         slaves.max = 50;
         slaves.counter = 0;
         slaves.registerPort = REGIST_PORT;
@@ -52,6 +55,7 @@ int main(int argc, char **argv) {
         master(sock, si_me, &slaves);
     }else{
         printf("I am a slave\n");
+        slave(sock);
     }
 
     //keep listening for data

@@ -8,12 +8,16 @@ CMakeFiles/MasterSlaveTimesync.dir/main.c.o
  /home/wolle/Workspace/c/MasterSlaveTimesync/error.h
  /home/wolle/Workspace/c/MasterSlaveTimesync/main.c
  /home/wolle/Workspace/c/MasterSlaveTimesync/master/master.h
+ /home/wolle/Workspace/c/MasterSlaveTimesync/slave/slave.h
  /home/wolle/Workspace/c/MasterSlaveTimesync/sock.h
 CMakeFiles/MasterSlaveTimesync.dir/master/master.c.o
  /home/wolle/Workspace/c/MasterSlaveTimesync/error.h
  /home/wolle/Workspace/c/MasterSlaveTimesync/master/master.c
  /home/wolle/Workspace/c/MasterSlaveTimesync/master/master.h
  /home/wolle/Workspace/c/MasterSlaveTimesync/sock.h
+CMakeFiles/MasterSlaveTimesync.dir/slave/slave.c.o
+ /home/wolle/Workspace/c/MasterSlaveTimesync/slave/slave.c
+ /home/wolle/Workspace/c/MasterSlaveTimesync/slave/slave.h
 CMakeFiles/MasterSlaveTimesync.dir/sock.c.o
  /home/wolle/Workspace/c/MasterSlaveTimesync/error.h
  /home/wolle/Workspace/c/MasterSlaveTimesync/sock.c
