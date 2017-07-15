@@ -31,6 +31,8 @@ zconf.h
 -
 pthread.h
 -
+string.h
+-
 error.h
 /home/wolle/Workspace/c/MasterSlaveTimesync/error.h
 sock.h

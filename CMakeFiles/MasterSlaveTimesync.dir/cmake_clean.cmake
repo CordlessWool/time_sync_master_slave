@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/MasterSlaveTimesync.dir/error.c.o"
   "CMakeFiles/MasterSlaveTimesync.dir/str.c.o"
   "CMakeFiles/MasterSlaveTimesync.dir/master/master.c.o"
+  "CMakeFiles/MasterSlaveTimesync.dir/slave/slave.c.o"
   "MasterSlaveTimesync.pdb"
   "MasterSlaveTimesync"
 )
