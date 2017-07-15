@@ -17,7 +17,7 @@
 
 int main(int argc, char **argv) {
     printf("Hello, World!\n");
-    printf(argv[1]);
+    printf("%s", argv[1]);
 
     struct sockaddr_in si_me, si_other, si_master;
 
@@ -58,7 +58,7 @@ int main(int argc, char **argv) {
             slave(sock);
         }
 
-        sleep((rand()%7));
+        //sleep((rand()%7));
 
     }
 

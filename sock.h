@@ -19,5 +19,9 @@ int setReciveTimeout(int sock, int sec, int usec);
 int isThereAMaster(int sock, char* broadcastIP, int port, struct sockaddr_in *si_master);
 int allowBroadcast(int sock, int allow);
 int addSlave(struct Slaves * slaves, struct sockaddr_in *si_slave);
+int removeSlaveByPos(struct Slaves *slaves, int pos);
+
+int checkIfNewSlave(struct Slaves slaves, struct sockaddr_in* si_slave);
+
 
 #endif //MASTERSLAVETIMESYNC_CREATECONNECTION_H

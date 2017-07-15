@@ -32,8 +32,14 @@ void master(int sock, struct sockaddr_in si_me, struct Slaves *slaves){
 
     while(1)
     {
+        printf("Sending slaves new Time\n");
+
         int counterSlave = (*slaves).counter;
-        if(counterSlave > 0)sleepTillNext = timeToSleep/counterSlave;
+        if(counterSlave > 0){
+            sleepTillNext = timeToSleep/counterSlave;
+        }else{
+            sleep(3);
+        }
         for(int i = 0; i < counterSlave; i++){
 
             si_slave = slaves->slaves[i];
@@ -45,6 +51,7 @@ void master(int sock, struct sockaddr_in si_me, struct Slaves *slaves){
 
             if(clock_gettime(CLOCK_REALTIME, &currentTime)) {
                 perror("clock_gettime()");
+                return;
             }
 
 
@@ -64,6 +71,8 @@ void master(int sock, struct sockaddr_in si_me, struct Slaves *slaves){
                         loop = true;
 
                     }
+                }else{
+                    printf("Slave do not response\n");
                 }
             }while(loop);
 
@@ -72,6 +81,7 @@ void master(int sock, struct sockaddr_in si_me, struct Slaves *slaves){
 
         }
 
+        printf("\n\n");
         sleep(1);
     }
 
@@ -108,7 +118,7 @@ void* waitingForSlaves(void *data){
 
     while(1){
 
-        printf("waiting for new slave...");
+        printf("\nwaiting for new slave...\n");
         fflush(stdout);
 
         if ((recvLen = recvfrom(sock, buf, BUFLEN, 0,
@@ -116,16 +126,26 @@ void* waitingForSlaves(void *data){
         {
 
 
-            //print details of the client/peer and the data received
-            printf("Received packet from %s:%d\n",
-                   inet_ntoa(si_slave.sin_addr), ntohs(si_slave.sin_port));
-            printf("Data: %s\n" , buf);
 
-            //now reply the client with the same data
-            if (sendto(sock, buf, recvLen, 0, (struct sockaddr*) &si_slave, siLen) >= 0)
-            {
-                addSlave(slaves, &si_slave);
-            }
+
+
+
+
+
+                //now reply the client with the same data
+                if (sendto(sock, buf, recvLen, 0, (struct sockaddr *) &si_slave, siLen) >= 0) {
+                    if(checkIfNewSlave(*slaves, &si_slave) == 0) {
+                        //print details of the client/peer and the data received
+                        printf("Added new slave: %s:%d\n",
+                               inet_ntoa(si_slave.sin_addr), ntohs(si_slave.sin_port));
+                        printf("Message from slave: %s\n", buf);
+                        addSlave(slaves, &si_slave);
+                    }else{
+                        printf("Already registered slave: %s:%d\n",
+                               inet_ntoa(si_slave.sin_addr), ntohs(si_slave.sin_port));
+                    }
+                }
+
         }
     }
 }

@@ -31,7 +31,8 @@ int allowBroadcast(int sock, int allow){
 int isThereAMaster(int sock, char* broadcastIP, int port, struct sockaddr_in *si_master){
 
     struct sockaddr_in si_broad;
-    si_broad.sin_addr.s_addr = inet_addr((broadcastIP));//htonl(INADDR_BROADCAST);
+    //si_broad.sin_addr.s_addr = inet_addr((broadcastIP));
+    si_broad.sin_addr.s_addr = htonl(INADDR_BROADCAST);
     si_broad.sin_family = AF_INET;
     si_broad.sin_port = htons(port);
 
@@ -85,5 +86,32 @@ int isThereAMaster(int sock, char* broadcastIP, int port, struct sockaddr_in *si
 int addSlave(struct Slaves *slaves, struct sockaddr_in* si_slave){
     int counter = (slaves->counter)++;
     slaves->slaves[counter] = *si_slave;
+    return 0;
+}
+
+int removeSlaveByPos(struct Slaves *slaves, int pos){
+
+    memset(&slaves->slaves[pos], 0, 1);
+    int amount = slaves->counter;
+    for(++pos; pos <= amount; pos++){
+        slaves->slaves[pos-1] = slaves->slaves[pos];
+    }
+
+    slaves->counter--;
+
+}
+
+int checkIfNewSlave(struct Slaves slaves, struct sockaddr_in* si_slave){
+
+    int amount = slaves.counter;
+    struct sockaddr_in si_comp;
+    for(int i = 0; i <= amount; i++){
+        si_comp = slaves.slaves[i];
+        if(inet_ntoa(si_comp.sin_addr) == inet_ntoa((*si_slave).sin_addr)
+                && si_comp.sin_port == si_slave->sin_port){
+            return -1;
+        }
+  }
+
     return 0;
 }
