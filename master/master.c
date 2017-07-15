@@ -52,7 +52,7 @@ void master(int sock, struct sockaddr_in si_me, struct Slaves *slaves){
 
             do {
                 if (sendto(sock, test, sizeof(test), 0
-                        , (struct sockaddr *) &si_slave, &siLen) != -1) {
+                        , (struct sockaddr *) &si_slave, siLen) != -1) {
 
                     if(loop){
 
