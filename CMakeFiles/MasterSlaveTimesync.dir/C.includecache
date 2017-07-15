@@ -73,6 +73,8 @@ stdio.h
 -
 string.h
 -
+../sock.h
+/home/wolle/Workspace/c/MasterSlaveTimesync/sock.h
 slave.h
 /home/wolle/Workspace/c/MasterSlaveTimesync/slave/slave.h
 
