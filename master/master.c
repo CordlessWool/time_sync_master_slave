@@ -33,7 +33,7 @@ void master(int sock, struct sockaddr_in si_me, struct Slaves *slaves){
     while(1)
     {
         int counterSlave = (*slaves).counter;
-        sleepTillNext = timeToSleep/counterSlave;
+        if(counterSlave > 0)sleepTillNext = timeToSleep/counterSlave;
         for(int i = 0; i < counterSlave; i++){
 
             si_slave = slaves->slaves[i];

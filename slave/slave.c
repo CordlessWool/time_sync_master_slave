@@ -12,7 +12,7 @@
 void slave(int sock){
 
     struct sockaddr_in si_master;
-    int recvLen, siMasterLen = sizeof(si_master);
+    int siMasterLen = sizeof(si_master), recvLen;
     char buf[BUFLEN];
 
     bool looped = false;
@@ -23,12 +23,12 @@ void slave(int sock){
 
             if(looped){
 
-                printf(buf);
+                printf("%p", buf);
 
                 looped = false;
 
             }else if(sendto(sock, buf, BUFLEN, 0,
-                    (struct sockaddr*)&si_master, &siMasterLen)){
+                    (struct sockaddr*)&si_master, (size_t)&siMasterLen)){
                 looped = true;
             }
         }
