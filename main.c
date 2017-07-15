@@ -37,25 +37,29 @@ int main(int argc, char **argv) {
     if(bind(sock, (struct sockaddr*)&si_me, sizeof(si_me)) == -1){
         die("Could not bind a socket to port");
     }
+    while(1) {
+        if (isThereAMaster(sock, argv[1], REGIST_PORT, &si_master) == -1) {
 
-    if(isThereAMaster(sock, argv[1], REGIST_PORT, &si_master) == -1){
+            pthread_t thread;
 
-        pthread_t thread;
+            struct Slaves slaves;
+            slaves.slaves[50];
+            memset(slaves.slaves, 0, 50);
+            slaves.max = 50;
+            slaves.counter = 0;
+            slaves.registerPort = REGIST_PORT;
 
-        struct Slaves slaves;
-        slaves.slaves[50];
-        memset(slaves.slaves, 0, 50);
-        slaves.max = 50;
-        slaves.counter = 0;
-        slaves.registerPort = REGIST_PORT;
+            pthread_create(&thread, NULL, &waitingForSlaves, (void *) (&slaves));
 
-        pthread_create(&thread, NULL, &waitingForSlaves, (void *) (&slaves));
+            printf("I am the master\n");
+            master(sock, si_me, &slaves);
+        } else {
+            printf("I am a slave\n");
+            slave(sock);
+        }
 
-        printf("I am the master\n");
-        master(sock, si_me, &slaves);
-    }else{
-        printf("I am a slave\n");
-        slave(sock);
+        sleep((rand()%7));
+
     }
 
     //keep listening for data

@@ -13,7 +13,6 @@
 
 #define BUFLEN 50
 
-
 int setReciveTimeout(int sock, int sec, int usec){
     struct timeval timeout;
     timeout.tv_sec = sec;
