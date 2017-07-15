@@ -71,6 +71,8 @@ stdbool.h
 -
 stdio.h
 -
+string.h
+-
 slave.h
 /home/wolle/Workspace/c/MasterSlaveTimesync/slave/slave.h
 
