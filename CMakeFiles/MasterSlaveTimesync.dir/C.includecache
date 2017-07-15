@@ -39,6 +39,8 @@ sock.h
 /home/wolle/Workspace/c/MasterSlaveTimesync/sock.h
 master/master.h
 /home/wolle/Workspace/c/MasterSlaveTimesync/master/master.h
+slave/slave.h
+/home/wolle/Workspace/c/MasterSlaveTimesync/slave/slave.h
 
 /home/wolle/Workspace/c/MasterSlaveTimesync/master/master.c
 printf.h
@@ -51,6 +53,8 @@ arpa/inet.h
 -
 zconf.h
 -
+time.h
+-
 ../error.h
 /home/wolle/Workspace/c/MasterSlaveTimesync/error.h
 ../sock.h
@@ -59,6 +63,18 @@ master.h
 /home/wolle/Workspace/c/MasterSlaveTimesync/master/master.h
 
 /home/wolle/Workspace/c/MasterSlaveTimesync/master/master.h
+
+/home/wolle/Workspace/c/MasterSlaveTimesync/slave/slave.c
+netinet/in.h
+-
+stdbool.h
+-
+stdio.h
+-
+slave.h
+/home/wolle/Workspace/c/MasterSlaveTimesync/slave/slave.h
+
+/home/wolle/Workspace/c/MasterSlaveTimesync/slave/slave.h
 
 /home/wolle/Workspace/c/MasterSlaveTimesync/sock.c
 sock.h

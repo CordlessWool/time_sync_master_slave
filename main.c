@@ -9,6 +9,7 @@
 #include "error.h"
 #include "sock.h"
 #include "master/master.h"
+#include "slave/slave.h"
 
 #define BUFLEN 512
 #define PORT 5005
@@ -54,6 +55,7 @@ int main(int argc, char **argv) {
         master(sock, si_me, &slaves);
     }else{
         printf("I am a slave\n");
+        slave(sock);
     }
 
     //keep listening for data

@@ -21,7 +21,6 @@ void slave(int sock){
         if((recvLen = recvfrom(sock, buf, BUFLEN, 0,
                 (struct sockaddr*)&si_master, &siMasterLen)) > 0){
 
-
             if(looped){
 
                 printf(buf);
