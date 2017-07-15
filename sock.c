@@ -69,17 +69,12 @@ int isThereAMaster(int sock, char* broadcastIP, int port, struct sockaddr_in *si
         //printf("Data: %s\n", buf);
         //close(sock);
         return 0;
-    } else if (recvLen) {
+    } else {
         //print details of the client/peer and the data received
 
         return -1;
     }
 
-
-    printf("Received packet from %s:%d\n", inet_ntoa((*si_master).sin_addr), ntohs((*si_master).sin_port));
-            printf("Data: %s\n", buf);
-            printf("%d\n", recvLen);
-            close(sock);
 
     return 0;
 

@@ -38,19 +38,21 @@ void master(int sock, struct sockaddr_in si_me, struct Slaves *slaves){
 
             si_slave = slaves->slaves[i];
 
+
             printf("Known Slave %s:%d\n",
                    inet_ntoa(slaves->slaves[i].sin_addr),
                    ntohs(slaves->slaves[i].sin_port));
 
-            if(clock_gettime(CLOCK_REALTIME, &currentTime)){
-                perror("clocl_gettime()");
+            if(clock_gettime(CLOCK_REALTIME, &currentTime)) {
+                perror("clock_gettime()");
             }
 
 
+            char *test = "test";
 
             do {
-                if (sendto(sock, &currentTime, sizeof(currentTime), 0
-                        , (struct sockaddr *) &si_slave, &siLen)) {
+                if (sendto(sock, test, sizeof(test), 0
+                        , (struct sockaddr *) &si_slave, &siLen) != -1) {
 
                     if(loop){
 
@@ -102,7 +104,7 @@ void* waitingForSlaves(void *data){
 
      /* Set socket to allow broadcast */
     if (allowBroadcast(sock, 1) < 0)
-        perror("setsockopt() failed");
+        perror("setsockopt()");
 
     while(1){
 
