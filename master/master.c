@@ -13,7 +13,7 @@
 
 #include "master.h"
 
-#define BUFLEN 128
+#define BUFLEN 2048
 
 
 void master(int sock, struct sockaddr_in si_me, struct Slaves *slaves){
@@ -60,9 +60,10 @@ void master(int sock, struct sockaddr_in si_me, struct Slaves *slaves){
 
             //snprintf(timeStr, BUFLEN, "%d:%d", (int)(currentTime.tv_sec), currentTime.tv_nsec);
 
-            printf("%d:%d\n", receiveTime.tv_sec, receiveTime.tv_nsec);
+            printf("current time: %d:%d\n", currentTime.tv_sec, currentTime.tv_nsec);
+            fflush(stdout);
             do {
-                if (sendto(sock, (struct timespec*) &currentTime, BUFLEN, 0
+                if (sendto(sock, (struct timespec*) &currentTime, sizeof(currentTime), 0
                         , (struct sockaddr *) &si_slave, siLen) != -1) {
 
                     if(loop){

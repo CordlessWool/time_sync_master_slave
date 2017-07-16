@@ -11,7 +11,7 @@
 #include "master/master.h"
 #include "slave/slave.h"
 
-#define BUFLEN 128
+#define BUFLEN 512
 #define PORT 5005
 #define REGIST_PORT 4004
 
