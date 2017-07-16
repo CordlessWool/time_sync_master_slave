@@ -13,7 +13,7 @@
 
 #include "master.h"
 
-#define BUFLEN 64
+#define BUFLEN 1500
 
 
 void master(int sock, struct sockaddr_in si_me, struct Slaves *slaves){
@@ -26,18 +26,20 @@ void master(int sock, struct sockaddr_in si_me, struct Slaves *slaves){
     int timeToSleep = 10;
     int sleepTillNext;
 
-    struct timespec currentTime;
+    struct timespec currentTime, receiveTime;
     char timeStr[BUFLEN];
+
     bool loop = false;
+    bool slaveMissResponse = false;
 
     while(1)
     {
-        printf("Sending slaves new Time\n");
-
         int counterSlave = (*slaves).counter;
         if(counterSlave > 0){
+            printf("Sending slaves new Time\n");
             sleepTillNext = timeToSleep/counterSlave;
         }else{
+            printf("No slaves registered");
             sleep(3);
         }
         for(int i = 0; i < counterSlave; i++){
@@ -55,24 +57,36 @@ void master(int sock, struct sockaddr_in si_me, struct Slaves *slaves){
             }
 
 
-            char *test = "test";
+            //snprintf(timeStr, BUFLEN, "%d:%d", (int)(currentTime.tv_sec), currentTime.tv_nsec);
 
+            printf("%d:%d\n", receiveTime.tv_sec, receiveTime.tv_nsec);
             do {
-                if (sendto(sock, test, sizeof(test), 0
+                if (sendto(sock, (struct timespec*) &currentTime, BUFLEN, 0
                         , (struct sockaddr *) &si_slave, siLen) != -1) {
 
                     if(loop){
 
                         loop = false;
 
-                    }else if (recvfrom(sock, timeStr, BUFLEN, 0
-                            , (struct sockaddr *) &si_other, &siLen)) {
-
+                    }else if ((recvLen = recvfrom(sock, (struct timespec*) &receiveTime, BUFLEN, 0
+                            , (struct sockaddr *) &si_other, &siLen)) > 0) {
+                            //TODO: prove if it is same slave
                         loop = true;
+                        printf("%d:%d\n", receiveTime.tv_sec, receiveTime.tv_nsec);
 
+                    }else if(!slaveMissResponse){
+                        printf("slave is not responding and will remove after second request");
+                        slaveMissResponse = true;
+                        sleep(sleepTillNext);
+                        loop = true;
+                    }else if(slaveMissResponse){
+                        printf("slave %s:%d was removed because of not responding"
+                                , inet_ntoa(si_slave.sin_addr), ntohs(si_slave.sin_port));
+                        removeSlaveByPos(slaves, i);
+                        fflush(stdout);
+                        slaveMissResponse = false;
+                        loop = false;
                     }
-                }else{
-                    printf("Slave do not response\n");
                 }
             }while(loop);
 
