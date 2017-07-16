@@ -9,7 +9,7 @@
 #include "../sock.h"
 #include "slave.h"
 
-#define BUFLEN 64
+#define BUFLEN 2048
 
 void slave(int sock){
 
@@ -26,19 +26,26 @@ void slave(int sock){
     bool looped = false;
     while(1){
 
-        if((recvLen = recvfrom(sock, &timeFromMaster, BUFLEN, 0,
+        if((recvLen = recvfrom(sock, (struct timespec*) &timeFromMaster, BUFLEN, 0,
                 (struct sockaddr*)&si_master, &siMasterLen)) > 0){
+
+            printf("First: %d:%d\n", timeFromMaster.tv_sec, timeFromMaster.tv_nsec);
+            fflush(stdout);
 
             if(looped){
 
-                printf("%s\n", buf);
+                //printf("%s\n", buf);
+                printf("%d:%d\n", timeFromMaster.tv_sec, timeFromMaster.tv_nsec);
                 fflush(stdout);
                 looped = false;
                 timeouts = 0;
 
-            }else if(sendto(sock, &timeFromMaster, sizeof(timeFromMaster), 0,
+            }else if(sendto(sock, (struct timespec*)&timeFromMaster, sizeof(timeFromMaster), 0,
                     (struct sockaddr*)&si_master, siMasterLen)){
                 looped = true;
+
+                printf("First: %d:%d\n", timeFromMaster.tv_sec, timeFromMaster.tv_nsec);
+                fflush(stdout);
             }
         }else if(timeouts < 3){
             timeouts++;

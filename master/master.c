@@ -13,7 +13,7 @@
 
 #include "master.h"
 
-#define BUFLEN 1500
+#define BUFLEN 128
 
 
 void master(int sock, struct sockaddr_in si_me, struct Slaves *slaves){
@@ -56,6 +56,7 @@ void master(int sock, struct sockaddr_in si_me, struct Slaves *slaves){
                 return;
             }
 
+            printf("struct size: %d\n", sizeof(currentTime));
 
             //snprintf(timeStr, BUFLEN, "%d:%d", (int)(currentTime.tv_sec), currentTime.tv_nsec);
 
