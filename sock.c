@@ -91,21 +91,24 @@ int addSlave(struct Slaves *slaves, struct sockaddr_in* si_slave){
 
 int removeSlaveByPos(struct Slaves *slaves, int pos){
 
-    memset(&slaves->slaves[pos], 0, 1);
+    static const struct sockaddr_in EmptyStruct;
+
     int amount = slaves->counter;
-    for(++pos; pos <= amount; pos++){
+    for(++pos; pos < amount; pos++){
         slaves->slaves[pos-1] = slaves->slaves[pos];
+        slaves->slaves[pos] = EmptyStruct;
     }
 
     slaves->counter--;
 
+    return 0;
 }
 
 int checkIfNewSlave(struct Slaves slaves, struct sockaddr_in* si_slave){
 
     int amount = slaves.counter;
     struct sockaddr_in si_comp;
-    for(int i = 0; i <= amount; i++){
+    for(int i = 0; i < amount; i++){
         si_comp = slaves.slaves[i];
         if(inet_ntoa(si_comp.sin_addr) == inet_ntoa((*si_slave).sin_addr)
                 && si_comp.sin_port == si_slave->sin_port){
