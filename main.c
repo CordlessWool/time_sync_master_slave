@@ -1,3 +1,4 @@
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -6,18 +7,27 @@
 #include <zconf.h>
 #include <pthread.h>
 #include <string.h>
+#include <sched.h>
 #include "error.h"
 #include "sock.h"
 #include "master/master.h"
 #include "slave/slave.h"
 
-#define BUFLEN 64
+#define CORE 3
+#define BUFLEN 512
 #define PORT 5005
 #define REGIST_PORT 4004
 
 int main(int argc, char **argv) {
-    printf("Hello, World!\n");
-    printf("%s", argv[1]);
+    printf("Hello, I want to join Timesync network!\n");
+
+    //run on CPU 4
+    cpu_set_t mask;
+    CPU_ZERO(&mask);
+    CPU_SET(CORE, &mask);
+    sched_setaffinity(0, sizeof(mask), &mask);
+    printf("I am running on core %d\n", CORE);
+
 
     struct sockaddr_in si_me, si_other, si_master;
 
@@ -41,6 +51,7 @@ int main(int argc, char **argv) {
         if (isThereAMaster(sock, argv[1], REGIST_PORT, &si_master) == -1) {
 
             pthread_t thread;
+            pthread_attr_t thread_attr;
 
             struct Slaves slaves;
             slaves.slaves[50];
@@ -49,7 +60,11 @@ int main(int argc, char **argv) {
             slaves.counter = 0;
             slaves.registerPort = REGIST_PORT;
 
-            pthread_create(&thread, NULL, &waitingForSlaves, (void *) (&slaves));
+            struct sched_param sched_prio;
+            sched_prio.__sched_priority = 1;
+            pthread_attr_setschedpolicy(&thread_attr, SCHED_RR);
+            pthread_attr_setschedparam(&thread_attr, &sched_prio);
+            pthread_create(&thread, &thread_attr, &waitingForSlaves, (void *) (&slaves));
 
             printf("I am the master\n");
             master(sock, si_me, &slaves);
