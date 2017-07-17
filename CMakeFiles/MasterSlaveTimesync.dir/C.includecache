@@ -55,6 +55,8 @@ pthread.h
 -
 string.h
 -
+sched.h
+-
 error.h
 /home/wolle/Workspace/c/MasterSlaveTimesync/error.h
 sock.h
@@ -96,6 +98,8 @@ stdbool.h
 stdio.h
 -
 string.h
+-
+time.h
 -
 ../sock.h
 /home/wolle/Workspace/c/MasterSlaveTimesync/sock.h

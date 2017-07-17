@@ -6,6 +6,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 #include "../sock.h"
 #include "slave.h"
 
@@ -16,7 +17,7 @@ void slave(int sock){
     struct sockaddr_in si_master;
     int siMasterLen = sizeof(si_master), recvLen;
     char buf[BUFLEN];
-    struct timespec timeFromMaster;
+    struct timespec timeFromMaster, currentTime;
     int timeouts = 0;
 
     memset(buf, 0, BUFLEN);
@@ -31,8 +32,12 @@ void slave(int sock){
 
             if(looped){
 
+                clock_settime(CLOCK_REALTIME, &timeFromMaster);
+                clock_gettime(CLOCK_REALTIME, &currentTime);
+
                 //printf("%s\n", buf);
-                printf("second: %ld:%ld\n", timeFromMaster.tv_sec, timeFromMaster.tv_nsec);
+                printf("mas: %ld:%ld\n", timeFromMaster.tv_sec, timeFromMaster.tv_nsec);
+                printf("own: %ld:%ld\n", currentTime.tv_sec, currentTime.tv_nsec);
                 fflush(stdout);
                 looped = false;
                 timeouts = 0;
@@ -41,8 +46,8 @@ void slave(int sock){
                     (struct sockaddr*)&si_master, siMasterLen)){
                 looped = true;
 
-                printf("First: %ld:%ld\n", timeFromMaster.tv_sec, timeFromMaster.tv_nsec);
-                fflush(stdout);
+                //printf("First:  %ld:%ld\n", timeFromMaster.tv_sec, timeFromMaster.tv_nsec);
+                //fflush(stdout);
             }
         }else if(timeouts < 3){
             timeouts++;
