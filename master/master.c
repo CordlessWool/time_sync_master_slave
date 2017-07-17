@@ -79,7 +79,7 @@ void master(int sock, struct sockaddr_in si_me, struct Slaves *slaves){
                         if(difference.tv_sec == 0){
                             loop = true;
                             clock_gettime(CLOCK_REALTIME, &sendTime);
-                            sendTime.tv_nsec -= difference.tv_nsec;
+                            sendTime.tv_nsec = sendTime.tv_nsec - (difference.tv_nsec/2);
                             if(sendTime.tv_nsec < 0){
                                 loop = false;
                             }

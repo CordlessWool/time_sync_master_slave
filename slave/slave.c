@@ -32,7 +32,7 @@ void slave(int sock){
             if(looped){
 
                 //printf("%s\n", buf);
-                printf("%ld:%ld\n", timeFromMaster.tv_sec, timeFromMaster.tv_nsec);
+                printf("second: %ld:%ld\n", timeFromMaster.tv_sec, timeFromMaster.tv_nsec);
                 fflush(stdout);
                 looped = false;
                 timeouts = 0;
