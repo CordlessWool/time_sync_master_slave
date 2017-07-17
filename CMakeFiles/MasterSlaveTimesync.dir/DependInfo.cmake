@@ -4,12 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "/home/wolle/Workspace/c/MasterSlaveTimesync/aids/calc.c" "/home/wolle/Workspace/c/MasterSlaveTimesync/CMakeFiles/MasterSlaveTimesync.dir/aids/calc.c.o"
+  "/home/wolle/Workspace/c/MasterSlaveTimesync/aids/str.c" "/home/wolle/Workspace/c/MasterSlaveTimesync/CMakeFiles/MasterSlaveTimesync.dir/aids/str.c.o"
   "/home/wolle/Workspace/c/MasterSlaveTimesync/error.c" "/home/wolle/Workspace/c/MasterSlaveTimesync/CMakeFiles/MasterSlaveTimesync.dir/error.c.o"
   "/home/wolle/Workspace/c/MasterSlaveTimesync/main.c" "/home/wolle/Workspace/c/MasterSlaveTimesync/CMakeFiles/MasterSlaveTimesync.dir/main.c.o"
   "/home/wolle/Workspace/c/MasterSlaveTimesync/master/master.c" "/home/wolle/Workspace/c/MasterSlaveTimesync/CMakeFiles/MasterSlaveTimesync.dir/master/master.c.o"
   "/home/wolle/Workspace/c/MasterSlaveTimesync/slave/slave.c" "/home/wolle/Workspace/c/MasterSlaveTimesync/CMakeFiles/MasterSlaveTimesync.dir/slave/slave.c.o"
   "/home/wolle/Workspace/c/MasterSlaveTimesync/sock.c" "/home/wolle/Workspace/c/MasterSlaveTimesync/CMakeFiles/MasterSlaveTimesync.dir/sock.c.o"
-  "/home/wolle/Workspace/c/MasterSlaveTimesync/str.c" "/home/wolle/Workspace/c/MasterSlaveTimesync/CMakeFiles/MasterSlaveTimesync.dir/str.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

@@ -12,6 +12,7 @@
 #include "../sock.h"
 
 #include "master.h"
+#include "../aids/calc.h"
 
 #define BUFLEN 2048
 
@@ -26,7 +27,7 @@ void master(int sock, struct sockaddr_in si_me, struct Slaves *slaves){
     int timeToSleep = 10;
     int sleepTillNext;
 
-    struct timespec currentTime, receiveTime;
+    struct timespec sendTime, receiveTime, difference;
     char timeStr[BUFLEN];
 
     bool loop = false;
@@ -51,19 +52,18 @@ void master(int sock, struct sockaddr_in si_me, struct Slaves *slaves){
                    inet_ntoa(slaves->slaves[i].sin_addr),
                    ntohs(slaves->slaves[i].sin_port));
 
-            if(clock_gettime(CLOCK_REALTIME, &currentTime)) {
+            if(clock_gettime(CLOCK_REALTIME, &sendTime)) {
                 perror("clock_gettime()");
                 return;
             }
 
-            printf("struct size: %d\n", sizeof(currentTime));
+            printf("struct size: %d\n", sizeof(sendTime));
 
-            //snprintf(timeStr, BUFLEN, "%d:%d", (int)(currentTime.tv_sec), currentTime.tv_nsec);
+            //snprintf(timeStr, BUFLEN, "%d:%d", (int)(sendTime.tv_sec), sendTime.tv_nsec);
 
-            printf("current time: %d:%d\n", currentTime.tv_sec, currentTime.tv_nsec);
-            fflush(stdout);
+
             do {
-                if (sendto(sock, (struct timespec*) &currentTime, sizeof(currentTime), 0
+                if (sendto(sock, (struct timespec*) &sendTime, sizeof(sendTime), 0
                         , (struct sockaddr *) &si_slave, siLen) != -1) {
 
                     if(loop){
@@ -73,8 +73,17 @@ void master(int sock, struct sockaddr_in si_me, struct Slaves *slaves){
                     }else if ((recvLen = recvfrom(sock, (struct timespec*) &receiveTime, BUFLEN, 0
                             , (struct sockaddr *) &si_other, &siLen)) > 0) {
                             //TODO: prove if it is same slave
-                        loop = true;
-                        printf("%d:%d\n", receiveTime.tv_sec, receiveTime.tv_nsec);
+                        clock_gettime(CLOCK_REALTIME, &receiveTime);
+                        difference = getTimeDifference(sendTime, receiveTime);
+
+                        if(difference.tv_sec == 0){
+                            loop = true;
+                            clock_gettime(CLOCK_REALTIME, &sendTime);
+                            sendTime.tv_nsec -= difference.tv_nsec;
+                            if(sendTime.tv_nsec < 0){
+                                loop = false;
+                            }
+                        }
 
                     }else if(!slaveMissResponse){
                         printf("slave is not responding and will remove after second request");
@@ -92,7 +101,10 @@ void master(int sock, struct sockaddr_in si_me, struct Slaves *slaves){
                 }
             }while(loop);
 
-
+            printf("time of sending:    %ld:%ld\n", sendTime.tv_sec, sendTime.tv_nsec);
+            printf("time of receiving:  %ld:%ld\n", receiveTime.tv_sec, receiveTime.tv_nsec);
+            printf("time of difference: %ld:%ld\n", difference.tv_sec, difference.tv_nsec);
+            fflush(stdout);
             sleep(sleepTillNext);
 
         }
