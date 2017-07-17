@@ -129,28 +129,28 @@ CMakeFiles/MasterSlaveTimesync.dir/error.c.o.provides: CMakeFiles/MasterSlaveTim
 CMakeFiles/MasterSlaveTimesync.dir/error.c.o.provides.build: CMakeFiles/MasterSlaveTimesync.dir/error.c.o
 
 
-CMakeFiles/MasterSlaveTimesync.dir/str.c.o: CMakeFiles/MasterSlaveTimesync.dir/flags.make
-CMakeFiles/MasterSlaveTimesync.dir/str.c.o: str.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wolle/Workspace/c/MasterSlaveTimesync/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/MasterSlaveTimesync.dir/str.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/MasterSlaveTimesync.dir/str.c.o   -c /home/wolle/Workspace/c/MasterSlaveTimesync/str.c
+CMakeFiles/MasterSlaveTimesync.dir/aids/str.c.o: CMakeFiles/MasterSlaveTimesync.dir/flags.make
+CMakeFiles/MasterSlaveTimesync.dir/aids/str.c.o: aids/str.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wolle/Workspace/c/MasterSlaveTimesync/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/MasterSlaveTimesync.dir/aids/str.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/MasterSlaveTimesync.dir/aids/str.c.o   -c /home/wolle/Workspace/c/MasterSlaveTimesync/aids/str.c
 
-CMakeFiles/MasterSlaveTimesync.dir/str.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/MasterSlaveTimesync.dir/str.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wolle/Workspace/c/MasterSlaveTimesync/str.c > CMakeFiles/MasterSlaveTimesync.dir/str.c.i
+CMakeFiles/MasterSlaveTimesync.dir/aids/str.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/MasterSlaveTimesync.dir/aids/str.c.i"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wolle/Workspace/c/MasterSlaveTimesync/aids/str.c > CMakeFiles/MasterSlaveTimesync.dir/aids/str.c.i
 
-CMakeFiles/MasterSlaveTimesync.dir/str.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/MasterSlaveTimesync.dir/str.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wolle/Workspace/c/MasterSlaveTimesync/str.c -o CMakeFiles/MasterSlaveTimesync.dir/str.c.s
+CMakeFiles/MasterSlaveTimesync.dir/aids/str.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/MasterSlaveTimesync.dir/aids/str.c.s"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wolle/Workspace/c/MasterSlaveTimesync/aids/str.c -o CMakeFiles/MasterSlaveTimesync.dir/aids/str.c.s
 
-CMakeFiles/MasterSlaveTimesync.dir/str.c.o.requires:
+CMakeFiles/MasterSlaveTimesync.dir/aids/str.c.o.requires:
 
-.PHONY : CMakeFiles/MasterSlaveTimesync.dir/str.c.o.requires
+.PHONY : CMakeFiles/MasterSlaveTimesync.dir/aids/str.c.o.requires
 
-CMakeFiles/MasterSlaveTimesync.dir/str.c.o.provides: CMakeFiles/MasterSlaveTimesync.dir/str.c.o.requires
-	$(MAKE) -f CMakeFiles/MasterSlaveTimesync.dir/build.make CMakeFiles/MasterSlaveTimesync.dir/str.c.o.provides.build
-.PHONY : CMakeFiles/MasterSlaveTimesync.dir/str.c.o.provides
+CMakeFiles/MasterSlaveTimesync.dir/aids/str.c.o.provides: CMakeFiles/MasterSlaveTimesync.dir/aids/str.c.o.requires
+	$(MAKE) -f CMakeFiles/MasterSlaveTimesync.dir/build.make CMakeFiles/MasterSlaveTimesync.dir/aids/str.c.o.provides.build
+.PHONY : CMakeFiles/MasterSlaveTimesync.dir/aids/str.c.o.provides
 
-CMakeFiles/MasterSlaveTimesync.dir/str.c.o.provides.build: CMakeFiles/MasterSlaveTimesync.dir/str.c.o
+CMakeFiles/MasterSlaveTimesync.dir/aids/str.c.o.provides.build: CMakeFiles/MasterSlaveTimesync.dir/aids/str.c.o
 
 
 CMakeFiles/MasterSlaveTimesync.dir/master/master.c.o: CMakeFiles/MasterSlaveTimesync.dir/flags.make
@@ -201,14 +201,39 @@ CMakeFiles/MasterSlaveTimesync.dir/slave/slave.c.o.provides: CMakeFiles/MasterSl
 CMakeFiles/MasterSlaveTimesync.dir/slave/slave.c.o.provides.build: CMakeFiles/MasterSlaveTimesync.dir/slave/slave.c.o
 
 
+CMakeFiles/MasterSlaveTimesync.dir/aids/calc.c.o: CMakeFiles/MasterSlaveTimesync.dir/flags.make
+CMakeFiles/MasterSlaveTimesync.dir/aids/calc.c.o: aids/calc.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wolle/Workspace/c/MasterSlaveTimesync/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/MasterSlaveTimesync.dir/aids/calc.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/MasterSlaveTimesync.dir/aids/calc.c.o   -c /home/wolle/Workspace/c/MasterSlaveTimesync/aids/calc.c
+
+CMakeFiles/MasterSlaveTimesync.dir/aids/calc.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/MasterSlaveTimesync.dir/aids/calc.c.i"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wolle/Workspace/c/MasterSlaveTimesync/aids/calc.c > CMakeFiles/MasterSlaveTimesync.dir/aids/calc.c.i
+
+CMakeFiles/MasterSlaveTimesync.dir/aids/calc.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/MasterSlaveTimesync.dir/aids/calc.c.s"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wolle/Workspace/c/MasterSlaveTimesync/aids/calc.c -o CMakeFiles/MasterSlaveTimesync.dir/aids/calc.c.s
+
+CMakeFiles/MasterSlaveTimesync.dir/aids/calc.c.o.requires:
+
+.PHONY : CMakeFiles/MasterSlaveTimesync.dir/aids/calc.c.o.requires
+
+CMakeFiles/MasterSlaveTimesync.dir/aids/calc.c.o.provides: CMakeFiles/MasterSlaveTimesync.dir/aids/calc.c.o.requires
+	$(MAKE) -f CMakeFiles/MasterSlaveTimesync.dir/build.make CMakeFiles/MasterSlaveTimesync.dir/aids/calc.c.o.provides.build
+.PHONY : CMakeFiles/MasterSlaveTimesync.dir/aids/calc.c.o.provides
+
+CMakeFiles/MasterSlaveTimesync.dir/aids/calc.c.o.provides.build: CMakeFiles/MasterSlaveTimesync.dir/aids/calc.c.o
+
+
 # Object files for target MasterSlaveTimesync
 MasterSlaveTimesync_OBJECTS = \
 "CMakeFiles/MasterSlaveTimesync.dir/main.c.o" \
 "CMakeFiles/MasterSlaveTimesync.dir/sock.c.o" \
 "CMakeFiles/MasterSlaveTimesync.dir/error.c.o" \
-"CMakeFiles/MasterSlaveTimesync.dir/str.c.o" \
+"CMakeFiles/MasterSlaveTimesync.dir/aids/str.c.o" \
 "CMakeFiles/MasterSlaveTimesync.dir/master/master.c.o" \
-"CMakeFiles/MasterSlaveTimesync.dir/slave/slave.c.o"
+"CMakeFiles/MasterSlaveTimesync.dir/slave/slave.c.o" \
+"CMakeFiles/MasterSlaveTimesync.dir/aids/calc.c.o"
 
 # External object files for target MasterSlaveTimesync
 MasterSlaveTimesync_EXTERNAL_OBJECTS =
@@ -216,12 +241,13 @@ MasterSlaveTimesync_EXTERNAL_OBJECTS =
 MasterSlaveTimesync: CMakeFiles/MasterSlaveTimesync.dir/main.c.o
 MasterSlaveTimesync: CMakeFiles/MasterSlaveTimesync.dir/sock.c.o
 MasterSlaveTimesync: CMakeFiles/MasterSlaveTimesync.dir/error.c.o
-MasterSlaveTimesync: CMakeFiles/MasterSlaveTimesync.dir/str.c.o
+MasterSlaveTimesync: CMakeFiles/MasterSlaveTimesync.dir/aids/str.c.o
 MasterSlaveTimesync: CMakeFiles/MasterSlaveTimesync.dir/master/master.c.o
 MasterSlaveTimesync: CMakeFiles/MasterSlaveTimesync.dir/slave/slave.c.o
+MasterSlaveTimesync: CMakeFiles/MasterSlaveTimesync.dir/aids/calc.c.o
 MasterSlaveTimesync: CMakeFiles/MasterSlaveTimesync.dir/build.make
 MasterSlaveTimesync: CMakeFiles/MasterSlaveTimesync.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/wolle/Workspace/c/MasterSlaveTimesync/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable MasterSlaveTimesync"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/wolle/Workspace/c/MasterSlaveTimesync/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C executable MasterSlaveTimesync"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/MasterSlaveTimesync.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -232,9 +258,10 @@ CMakeFiles/MasterSlaveTimesync.dir/build: MasterSlaveTimesync
 CMakeFiles/MasterSlaveTimesync.dir/requires: CMakeFiles/MasterSlaveTimesync.dir/main.c.o.requires
 CMakeFiles/MasterSlaveTimesync.dir/requires: CMakeFiles/MasterSlaveTimesync.dir/sock.c.o.requires
 CMakeFiles/MasterSlaveTimesync.dir/requires: CMakeFiles/MasterSlaveTimesync.dir/error.c.o.requires
-CMakeFiles/MasterSlaveTimesync.dir/requires: CMakeFiles/MasterSlaveTimesync.dir/str.c.o.requires
+CMakeFiles/MasterSlaveTimesync.dir/requires: CMakeFiles/MasterSlaveTimesync.dir/aids/str.c.o.requires
 CMakeFiles/MasterSlaveTimesync.dir/requires: CMakeFiles/MasterSlaveTimesync.dir/master/master.c.o.requires
 CMakeFiles/MasterSlaveTimesync.dir/requires: CMakeFiles/MasterSlaveTimesync.dir/slave/slave.c.o.requires
+CMakeFiles/MasterSlaveTimesync.dir/requires: CMakeFiles/MasterSlaveTimesync.dir/aids/calc.c.o.requires
 
 .PHONY : CMakeFiles/MasterSlaveTimesync.dir/requires
 

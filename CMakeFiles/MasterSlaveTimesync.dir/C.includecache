@@ -6,6 +6,28 @@
 
 #IncludeRegexTransform: 
 
+/home/wolle/Workspace/c/MasterSlaveTimesync/aids/calc.c
+calc.h
+/home/wolle/Workspace/c/MasterSlaveTimesync/aids/calc.h
+
+/home/wolle/Workspace/c/MasterSlaveTimesync/aids/calc.h
+time.h
+-
+
+/home/wolle/Workspace/c/MasterSlaveTimesync/aids/str.c
+str.h
+/home/wolle/Workspace/c/MasterSlaveTimesync/aids/str.h
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+assert.h
+-
+
+/home/wolle/Workspace/c/MasterSlaveTimesync/aids/str.h
+
 /home/wolle/Workspace/c/MasterSlaveTimesync/error.c
 stdio.h
 -
@@ -61,6 +83,8 @@ time.h
 /home/wolle/Workspace/c/MasterSlaveTimesync/sock.h
 master.h
 /home/wolle/Workspace/c/MasterSlaveTimesync/master/master.h
+../aids/calc.h
+/home/wolle/Workspace/c/MasterSlaveTimesync/aids/calc.h
 
 /home/wolle/Workspace/c/MasterSlaveTimesync/master/master.h
 
@@ -103,18 +127,4 @@ netinet/in.h
 -
 stdbool.h
 -
-
-/home/wolle/Workspace/c/MasterSlaveTimesync/str.c
-str.h
-/home/wolle/Workspace/c/MasterSlaveTimesync/str.h
-stdio.h
--
-stdlib.h
--
-string.h
--
-assert.h
--
-
-/home/wolle/Workspace/c/MasterSlaveTimesync/str.h
 

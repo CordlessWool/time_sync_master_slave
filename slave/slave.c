@@ -29,13 +29,10 @@ void slave(int sock){
         if((recvLen = recvfrom(sock, (struct timespec*) &timeFromMaster, BUFLEN, 0,
                 (struct sockaddr*)&si_master, &siMasterLen)) > 0){
 
-            printf("First: %d:%d\n", timeFromMaster.tv_sec, timeFromMaster.tv_nsec);
-            fflush(stdout);
-
             if(looped){
 
                 //printf("%s\n", buf);
-                printf("%d:%d\n", timeFromMaster.tv_sec, timeFromMaster.tv_nsec);
+                printf("second: %ld:%ld\n", timeFromMaster.tv_sec, timeFromMaster.tv_nsec);
                 fflush(stdout);
                 looped = false;
                 timeouts = 0;
@@ -44,7 +41,7 @@ void slave(int sock){
                     (struct sockaddr*)&si_master, siMasterLen)){
                 looped = true;
 
-                printf("First: %d:%d\n", timeFromMaster.tv_sec, timeFromMaster.tv_nsec);
+                printf("First: %ld:%ld\n", timeFromMaster.tv_sec, timeFromMaster.tv_nsec);
                 fflush(stdout);
             }
         }else if(timeouts < 3){
