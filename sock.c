@@ -110,7 +110,7 @@ int checkIfNewSlave(struct Slaves slaves, struct sockaddr_in* si_slave){
     struct sockaddr_in si_comp;
     for(int i = 0; i < amount; i++){
         si_comp = slaves.slaves[i];
-        if(inet_ntoa(si_comp.sin_addr) == inet_ntoa((*si_slave).sin_addr)
+        if((si_comp.sin_addr.s_addr) == ((*si_slave).sin_addr.s_addr)
                 && si_comp.sin_port == si_slave->sin_port){
             return -1;
         }
