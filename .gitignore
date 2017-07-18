@@ -30,3 +30,13 @@
 
 # Debug files
 *.dSYM/
+
+
+
+# IDE
+/.idea/*
+/Makefile
+/MasterSlaveTimesync
+/MasterSlaveTimesync.cbp
+/cmake_install.cmake
+/CMakeCache.txt
