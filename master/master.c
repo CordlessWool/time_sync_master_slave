@@ -15,6 +15,8 @@
 #include "../aids/calc.h"
 
 #define BUFLEN 2048
+#define WAIT_TO_SYNC 60
+#define TIME_TO_SLEEP 20
 
 
 void master(int sock, struct sockaddr_in si_me, struct Slaves *slaves){
@@ -24,7 +26,7 @@ void master(int sock, struct sockaddr_in si_me, struct Slaves *slaves){
     int siLen = sizeof(si_slave), recvLen;
     //char buf[BUFLEN];
 
-    int timeToSleep = 10;
+    int timeToSleep = TIME_TO_SLEEP;
     int sleepTillNext;
 
     struct timespec sendTime, receiveTime, difference;
@@ -110,7 +112,7 @@ void master(int sock, struct sockaddr_in si_me, struct Slaves *slaves){
         }
 
         printf("\n\n");
-        sleep(1);
+        sleep(WAIT_TO_SYNC);
     }
 
 
