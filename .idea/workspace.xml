@@ -14,6 +14,7 @@
     <list default="true" id="b191dcc9-6ab7-448e-be5f-3fc6eb9a6bd5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/master/master.c" afterPath="$PROJECT_DIR$/master/master.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slave/slave.c" afterPath="$PROJECT_DIR$/slave/slave.c" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/CMakeFiles/" />
@@ -25,7 +26,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.37179488">
+    <splitter split-orientation="horizontal" split-proportion="0.4823718">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="main.c" pinned="false" current-in-tab="false">
@@ -43,8 +44,8 @@
           <file leaf-file-name="slave.c" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/slave/slave.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="479">
-                  <caret line="41" column="30" lean-forward="false" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
+                <state relative-caret-position="667">
+                  <caret line="51" column="13" lean-forward="true" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
                   <folding>
                     <element signature="e#40#63#0" expanded="true" />
                   </folding>
@@ -137,8 +138,8 @@
           <file leaf-file-name="master.c" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/master/master.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="306">
-                  <caret line="17" column="23" lean-forward="false" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+                <state relative-caret-position="720">
+                  <caret line="79" column="0" lean-forward="true" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
                   <folding>
                     <element signature="e#40#59#0" expanded="true" />
                   </folding>
@@ -199,11 +200,11 @@
         <option value="$PROJECT_DIR$/str.c" />
         <option value="$PROJECT_DIR$/aids/calc.h" />
         <option value="$PROJECT_DIR$/aids/calc.c" />
-        <option value="$PROJECT_DIR$/slave/slave.c" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/main.c" />
         <option value="$PROJECT_DIR$/sock.c" />
         <option value="$PROJECT_DIR$/master/master.c" />
+        <option value="$PROJECT_DIR$/slave/slave.c" />
       </list>
     </option>
   </component>
@@ -214,9 +215,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1920" />
-    <option name="width" value="1920" />
-    <option name="height" value="1080" />
+    <option name="x" value="-1" />
+    <option name="y" value="-11" />
+    <option name="width" value="1922" />
+    <option name="height" value="1092" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -546,14 +548,15 @@
       <workItem from="1500762422337" duration="23000" />
       <workItem from="1500808852055" duration="1433000" />
       <workItem from="1500822590592" duration="262000" />
+      <workItem from="1500995817469" duration="1621000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101175000" />
+    <option name="totallyTimeSpent" value="102796000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="0" width="1920" height="1080" extended-state="6" />
+    <frame x="-1" y="-11" width="1922" height="1092" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15598291" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -611,7 +614,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/slave/slave.c</url>
-          <line>46</line>
+          <line>47</line>
           <option name="timeStamp" value="70" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
@@ -1041,22 +1044,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/slave/slave.c">
+    <entry file="file://$PROJECT_DIR$/master/master.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="41" column="30" lean-forward="false" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
+        <state relative-caret-position="720">
+          <caret line="79" column="0" lean-forward="true" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
           <folding>
-            <element signature="e#40#63#0" expanded="true" />
+            <element signature="e#40#59#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/master/master.c">
+    <entry file="file://$PROJECT_DIR$/slave/slave.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="23" lean-forward="false" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+        <state relative-caret-position="667">
+          <caret line="51" column="13" lean-forward="true" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
           <folding>
-            <element signature="e#40#59#0" expanded="true" />
+            <element signature="e#40#63#0" expanded="true" />
           </folding>
         </state>
       </provider>
