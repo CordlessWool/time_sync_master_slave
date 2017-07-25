@@ -15,7 +15,7 @@
 #include "../aids/calc.h"
 
 #define BUFLEN 2048
-#define WAIT_TO_SYNC 60
+#define WAIT_TO_SYNC 10
 #define TIME_TO_SLEEP 20
 
 
