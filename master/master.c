@@ -15,8 +15,8 @@
 #include "../aids/calc.h"
 
 #define BUFLEN 2048
-#define WAIT_TO_SYNC 10
-#define TIME_TO_SLEEP 20
+#define WAIT_TO_SYNC 5
+#define TIME_TO_SLEEP 10
 
 
 void master(int sock, struct sockaddr_in si_me, struct Slaves *slaves){
