@@ -27,7 +27,7 @@ int main(int argc, char **argv) {
     CPU_SET(CORE, &mask);
     sched_setaffinity(0, sizeof(mask), &mask);
     printf("I am running on core %d\n", CORE);
-
+    fflush(stdout);
 
     struct sockaddr_in si_me, si_other, si_master;
 
@@ -67,9 +67,11 @@ int main(int argc, char **argv) {
             pthread_create(&thread, &thread_attr, &waitingForSlaves, (void *) (&slaves));
 
             printf("I am the master\n");
+            fflush(stdout);
             master(sock, si_me, &slaves);
         } else {
             printf("I am a slave\n");
+            fflush(stdout);
             slave(sock);
         }
 
