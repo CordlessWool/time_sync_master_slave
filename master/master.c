@@ -103,10 +103,10 @@ void master(int sock, struct sockaddr_in si_me, struct Slaves *slaves){
                 }
             }while(loop);
 
-            printf("time of sending:    %ld:%ld\n", sendTime.tv_sec, sendTime.tv_nsec);
+            /*printf("time of sending:    %ld:%ld\n", sendTime.tv_sec, sendTime.tv_nsec);
             printf("time of receiving:  %ld:%ld\n", receiveTime.tv_sec, receiveTime.tv_nsec);
             printf("time of difference: %ld:%ld\n", difference.tv_sec, difference.tv_nsec);
-            fflush(stdout);
+            fflush(stdout);*/
             sleep(sleepTillNext);
 
         }

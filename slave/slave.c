@@ -36,9 +36,10 @@ void slave(int sock){
                 clock_gettime(CLOCK_REALTIME, &currentTime);
 
                 //printf("%s\n", buf);
+                /*
                 printf("mas: %ld:%ld\n", timeFromMaster.tv_sec, timeFromMaster.tv_nsec);
                 printf("own: %ld:%ld\n", currentTime.tv_sec, currentTime.tv_nsec);
-                fflush(stdout);
+                fflush(stdout);*/
                 looped = false;
                 timeouts = 0;
 
