@@ -34,7 +34,7 @@
 
 
 # IDE
-/.idea/*
+.idea/*
 /Makefile
 /MasterSlaveTimesync
 /MasterSlaveTimesync.cbp
