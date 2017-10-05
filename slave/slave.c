@@ -22,7 +22,7 @@ void slave(int sock){
 
     memset(buf, 0, BUFLEN);
 
-    setReciveTimeout(sock, 13, 0);
+    setReciveTimeout(sock, 50, 0);
 
     bool looped = false;
     while(1){
