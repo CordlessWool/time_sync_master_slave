@@ -51,7 +51,7 @@ int gpio_setup(int gpio)
     sprintf(buf,"/sys/class/gpio/gpio%d/value", gpio);
     printf("%s\n",buf);
 
-    fd = open(buf, O_RDONLY);
+    fd = open(buf, O_WRONLY);
 
     return fd;
 }
