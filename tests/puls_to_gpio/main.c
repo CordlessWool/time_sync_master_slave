@@ -22,7 +22,7 @@ int main(){
         if(currentTime.tv_nsec <= 1000){
             write(fd, "1", 1);
             //printf("1");
-            usleep(500);
+            usleep(1000);
             write(fd, "0", 1);
             //printf("0");
             fflush(stdout);
